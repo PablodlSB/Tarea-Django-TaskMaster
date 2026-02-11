@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+
+<div class="container">
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.description }}</p>
+
+    <div class="section">
+        <h2>Tareas</h2>
+        {% for task in project.tasks.all %}
+        <div class="task-card {% if task.priority == 'L' %}task-low{% elif task.priority == 'M' %}task-medium{% else %}task-high{% endif %}">
+            <span>{{ task.title }}</span>
+            <span>{{ task.get_status_display }}</span>
+        </div>
+        {% empty %}
+        <p>No hay tareas</p>
+        {% endfor %}
+    </div>
+
+    <div class="section chart-container">
+        <h2>Progreso del Proyecto</h2>
+        <canvas id="tasksChart" width="400" height="400"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('tasksChart');
+
+const doneTasks = Number("{{ done_tasks|default:0 }}");
+const pendingTasks = Number("{{ pending_tasks|default:0 }}");
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Completadas', 'Pendientes'],
+        datasets: [{
+            data: [doneTasks, pendingTasks],
+            backgroundColor: ['#4CAF50', '#FF9800']
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+</script>

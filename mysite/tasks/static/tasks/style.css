@@ -1,0 +1,79 @@
+/* Reset y fondo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor central */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Cabeceras */
+h1, h2 {
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Proyectos y colaboraciones en tarjetas */
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.project-card a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* Tareas */
+.task-card {
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Colores por prioridad */
+.task-low { background-color: #4CAF50; }
+.task-medium { background-color: #FF9800; }
+.task-high { background-color: #E53935; }
+
+/* Pie chart */
+.chart-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Contenedores de secciones */
+.section {
+    margin-bottom: 40px;
+}
+
